@@ -1,0 +1,59 @@
+schema = "animus.plugin.v1"
+name = "animus-subject-openalex-works"
+version = "0.1.0"
+plugin_kind = "subject_backend"
+description = "OpenAlex scholarly works subject backend plugin for Animus"
+protocol = "stdio"
+
+[binary]
+default = "animus-subject-openalex-works"
+
+[capabilities]
+streaming = false
+progress = false
+cancellation = false
+methods = [
+  "subject/list",
+  "subject/get",
+  "subject/schema",
+  "openalex.work/list",
+  "openalex.work/get",
+  "openalex.work/schema",
+  "health/check",
+]
+subject_kinds = ["openalex.work"]
+
+[[env]]
+key = "OPENALEX_SEARCH"
+description = "Optional full-text search term for OpenAlex works."
+required = false
+
+[[env]]
+key = "OPENALEX_FILTER"
+description = "Optional OpenAlex filter expression."
+required = false
+
+[[env]]
+key = "OPENALEX_SORT"
+description = "Optional OpenAlex sort expression."
+required = false
+
+[[env]]
+key = "OPENALEX_API_URL"
+description = "Optional OpenAlex API base URL. Defaults to https://api.openalex.org."
+required = false
+
+[[env]]
+key = "OPENALEX_MAILTO"
+description = "Optional email address for OpenAlex polite pool."
+required = false
+
+[[env]]
+key = "OPENALEX_QUERY"
+description = "Optional local text query applied to works."
+required = false
+
+[[env]]
+key = "OPENALEX_LIMIT"
+description = "Optional maximum work count from 1 to 200. Defaults to 50."
+required = false
